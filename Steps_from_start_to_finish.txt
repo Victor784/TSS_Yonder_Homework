@@ -1,0 +1,36 @@
+Steps taken to solve Yonder homework task:
+
+1. Read requirments
+       - with some help from Google, understood the technical steps that were not so clear
+2. Make a plan / ordered TODO list 
+           2.1 Pull the dockerImage - Done 
+           2.2 Run the dockerImage and see if works - Done
+                              - Refresh your memory on how to run dockerImages that listen on a specific port - Done
+           2.3 Open a browser and checkout the questions at / - Done 
+           2.4 Link the git repos (local - origin) - Done
+           2.5 Create Pyton Console app that can call the API endpoints and create excel files
+ based on the requirements 
+                        2.5.1 Make a plan, ordered TODO list 
+                                          - Create project dir - done
+                                          - Create enviornement - done 
+                                          - Install required packages (requests for API comms and Pandas / openpyxl for Excel) - done 
+                                          - Decide on an arhitecture
+                                                             - the app will be menu-based so it is more easy to use 
+                                                             - the app will load 150 licenses from the API endpoint (call the get 5 times) at startup and 
+                                                                hold the licenses in a list 
+                                                              - the 3 methods requested will each generate a single excel file. 
+                                                                            - Does it make sense for them to check if one already exists? -NO 
+                                                                                          the app will name each file with the date (seconds included) for an easy way to check between them 
+                                                              - if the size of the direcotyr where we save the excel files is greated than some MB we could delete the oldest entry.
+                                          - Create barebone app skeleton - done
+                                          - Create user UI - done 
+                                          - Finish LeftSide API endpoint reading part - done
+                                                            - Issues with the key vaalue of the json object that you get from the API- Tested with postman and the name is dataDeExpirare / dataDeEmitere 
+                                          
+                                          - Finish RightSide - excel creation - done 
+                                                           - issues with the datetime format probably, the show only valid licenses not working - bug in the logic found and fixed
+                                                           - need to make the column with bigger by default done 
+                                                           - change the name of the excels - done 
+                                                           - change the name of the columns - done 
+                                          - Write unitTests ? not needed / no time
+                                          - Test - done 

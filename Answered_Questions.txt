@@ -1,0 +1,61 @@
+Answers for the questions at "/" : 
+
+1. Anusefull data structure is a Queue, which is differentiated from the rest of tha data structures 
+by its property that you can add elements to the queue only at the end of it and delete elements only 
+at the front. A common use for queues are for when you have asyncronous message sending and processing.
+The emitter is pushing its messages on a message queue, and the consumer consumes the message from 
+the queue and deleting them from the data structure. 
+    Another data structure that I want to mention is a linked list. It is a really  versatille data strucutre
+(it is used to implement queues) and comes in different flavors, depending on the need. Singley linked list, 
+doubly linked list, circular linked lists, circular doubly linked lists. For all the different types of linked list, the 
+following is true : the list is made up of nodes , which are a data structure that hold the data, and 1 or 2 pointers 
+that point to the previous and the the next node in the list. The linked list is really helpfull when you need to hold
+data of uncertain dimensions, as for doubly linked lists, for example, insertion and deletion from the list 
+it has a time comlexity of O(1) , meaning no matter the ammount of data inside the list, the insertion / deletion 
+take up a constant time. Another advantage is that the data inside a linked list does not need to be kept all next 
+to each other. Their uses cases are varied, and I interacted with data structures on that are higher level (c++ vectors / maps , C# lists etc) that are based
+on these linked lists. 
+
+2. When I opena  web browser and search for  http://www.tss-yonder.com the browser calls a DNS server, and asks what is the IP address of the domain that I entered in the broweser. The DNS responds with the IP, and then the browser
+can establisha connection between the yonder server and itself. Of course, before calling the DNS server, the browser first checks in its cache to see of the IP is already known. 
+The IPv4 of http://www.tss-yonder.com is : 172.67.73.177 (IPV6 : 2606:4700:20::681a:3e ) Used nslookup on www.tss-yonder.com and than tried to do a reverse DNS lookup but failed . used the browser to access 172.67.73.177 and found that I cannot do that but that your web
+site is hosted on cloudware
+
+3. TCP is a connection-oriented transport protocol that provides guaranteed delivery of data packets in the order they were sent. It handles error detection, retransmission of lost packets, and congestion control. Higher level protocols that are used by,
+let's say banksing software is based on TCP as its reliability is necessary in this kind of applications.
+   UDP is a connection-less transport protocol that does not guarantee that the data packets are successfully sent, does not handle error detection, retransmitssion of lost packets, but it is really fast. So Teams / Skype / Discord probably use 
+protocols based on UDP for transmitting the packets that contain the noice / voice processed data. Online videa streaming is also based on the UDP protocol
+
+4.  I would do the following things : 
+      1. Open AWS
+      2.  Log AWS Management Console and I would create an EC2 service and launch it (I would choose the following AMI : .NET SDK on Windows Server 2022 with support by AskforCloud LLC as I am using C# )
+      3.  I would containerize my app using Docker 
+      4.  I woulb build and push the docker image
+      5. I would deploy the docker container 
+      6. Configure Security groups
+      7. Register a domain name
+      8. Test my App that everything is working as intended
+      9. Monitor the app
+
+5. The easyest way I can think of is to implement IP whitelisting , meaning in the AWS security groups to allow access to my EC2 instance only from my and my friends IPs.
+
+6. To solve this issue I would use end-to-end encruption. I would need to add this feature to my app and re-deploy it. This means that I would need to find a way for users when are connected in a chat to be able to generate theyr encryption keys and before sending the messages I would need to encrypt them.
+When 2 users would start chatting I would need to find a solution for encryption key exchange. so that both users can encrypt / decrypt the messages between them.
+
+7. Cookies are small pieces of data stored in the browser , they can be used for multiple purposes such a ssession management, tracking & analythics , advertising and many others.
+1 cookie that is used by http://www.tss-yonder.com is called "lang" and is used to keep saved my language preference 
+
+8. In C# creating child process means that I need to use the Process class from System.Diagnostics and I would need to use create a childProcess object, link it to an
+executable , set its arguments and than use childProcess.start(). There are 4 possilbe states of the child process: Running
+Suspended, Blocked or Terminated
+
+9. To find the Process Id of my app I can use Task manager for windows  (or tools for Linux - like calling "ps"). 
+To debug my app I can search in the log files to find when and where in the code the error happens. As the app is running normally
+and only occasionaly it throws an error, using a debugger seems more complicated. Maybe setting breakpoints in the exception throwing parts of the code
+and wait for an error to happen would be a acceptable ideea
+
+10. I would use Postgre SQL , as I am already familiar with the way C# is working along side this DBMS(there are already ORMs that do the majority of heavy lifting for you). 
+For storring the user passwords : instead of storing the text inside the DB, I would hash the passwords and keep the hash in the DB. This means that 
+when the user registers a new account, in the DB, instead of storing the email I would use a hashing alg to hash it and save the result in the db next to the email / name / etc.
+And each time the user logs in , I would need to hash the value that he inputs in the field and compare that to the DB entry.
+I have a Password Manager Application in the works for which I do this exactly thing.
